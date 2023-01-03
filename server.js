@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 });
 conn.query("SELECT * FROM member_table", (err, res) => {
   console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
-  conn.end();
+  //conn.end();
 });
 res.render("main");
 })
