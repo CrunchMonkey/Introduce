@@ -14,15 +14,17 @@ app.use('/uploads', express.static('uploads'));
 
 app.get('/', function (req, res) {
   //res.send('Hello World');
-  conn.query("SELECT 1 as val", (err, rows) => {
-    console.log(rows); //[ {val: 1}, meta: ... ]
-    
-});
-conn.query("SELECT * FROM member_table", (err, res) => {
-  console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
-  //conn.end();
-});
-res.render("main");
+  // conn.query("SELECT 1 as val", (err, rows) => {
+  //     console.log(rows); //[ {val: 1}, meta: ... ]
+  // });
+  var skill;
+  conn.query("SELECT * FROM skill_table", (err, res) => {
+    //console.log(res[1]);
+    skill = res;
+    //conn.end();
+  });
+  console.log(skill);
+  res.render("main", skill);
 })
 
 
